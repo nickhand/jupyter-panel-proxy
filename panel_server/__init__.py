@@ -69,7 +69,7 @@ def _discover_apps():
 
 def _launch_command(port):
     config = _discover_apps()
-    command = ["panel", "serve", *config.get('apps'), "--allow-websocket-origin=*", "--port", f"{port}", "--prefix", "{base_url}panel", "--disable-index-redirect"]
+    command = ["panel", "serve", *config.get('apps'), "--allow-websocket-origin=*", "--websocket-max-message-size", "100000000", "--port", f"{port}", "--prefix", "{base_url}panel", "--disable-index-redirect"]
     if config.get('autoreload'):
         command.append('--autoreload')
     if config.get('warm'):
